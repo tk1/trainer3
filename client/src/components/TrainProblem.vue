@@ -16,6 +16,7 @@
 
 <script>
 import axios from 'axios'
+import { bus } from '../bus.js'
 
 const url = '/api/answers'
 
@@ -39,6 +40,7 @@ export default {
       })
         .then(response => {
           that.result = JSON.stringify(response.data)
+          bus.$emit('new-answer', response.data)
           that.answer = ''
         })
         .catch(error => {

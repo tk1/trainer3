@@ -23,6 +23,7 @@
 
 <script>
 import axios from 'axios'
+import { bus } from '../bus.js'
 
 const url = '/api/answers'
 
@@ -37,6 +38,7 @@ export default {
   },
   created () {
     this.fetchData()
+    bus.$on('new-answer', this.newAnswer)
   },
   methods: {
     fetchData () {
@@ -50,6 +52,9 @@ export default {
         .catch(error => {
           that.error = error.toString()
         })
+    },
+    newAnswer (answer) {
+      this.items.push(answer)
     }
   }
 
