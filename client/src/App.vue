@@ -2,17 +2,20 @@
   <!-- make div to a bootstrap container -->
   <div id="app" class="container">
     <img alt="htwsaar logo" src="./assets/htwsaar_ingwi_logo.png" width="150px">
-    <answers></answers>
+    <train-problem></train-problem>
+    <show-answers></show-answers>
   </div>
 </template>
 
 <script>
-import answers from './components/AnswerHistory'
+import ShowAnswers from './components/AnswerHistory'
+import TrainProblem from './components/TrainProblem'
 
 export default {
   name: 'app',
   components: {
-    answers
+    ShowAnswers,
+    TrainProblem
   }
 }
 </script>
