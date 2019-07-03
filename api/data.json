@@ -1,0 +1,22 @@
+{
+  "ids": {
+    "User": 1,
+    "AccessToken": 1,
+    "ACL": 1,
+    "RoleMapping": 1,
+    "Role": 1,
+    "answer": 4
+  },
+  "models": {
+    "User": {},
+    "AccessToken": {},
+    "ACL": {},
+    "RoleMapping": {},
+    "Role": {},
+    "answer": {
+      "1": "{\"text\":\"answer 1\",\"createdAt\":\"2019-07-03T12:41:18.896Z\",\"id\":1}",
+      "2": "{\"text\":\"answer 2\",\"createdAt\":\"2019-07-03T13:03:29.877Z\",\"id\":2}",
+      "3": "{\"text\":\"answer 3\",\"createdAt\":\"2019-07-03T13:07:29.877Z\",\"id\":3}"
+    }
+  }
+}

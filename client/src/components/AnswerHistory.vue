@@ -1,6 +1,7 @@
 <template>
   <div>
     <h1>{{title}}</h1>
+    <p v-if="error">An error occurred: {{error}}</p>
 
     <table class="table table-striped">
       <thead>
@@ -21,25 +22,37 @@
 </template>
 
 <script>
+import axios from 'axios'
+
+const url = '/api/answers'
+
 export default {
   name: 'AnswerHistory',
   data () {
     return {
       title: 'Answer History',
-      items: [
-        {
-          id: 1,
-          text: 'first answer',
-          createdAt: Date.now() - 10 * 1000
-        },
-        {
-          id: 2,
-          text: 'second answer',
-          createdAt: Date.now()
-        }
-      ]
+      error: null,
+      items: []
+    }
+  },
+  created () {
+    this.fetchData()
+  },
+  methods: {
+    fetchData () {
+      var that = this
+      that.error = null
+
+      axios.get(url)
+        .then(response => {
+          that.items = response.data
+        })
+        .catch(error => {
+          that.error = error.toString()
+        })
     }
   }
+
 }
 </script>
 
