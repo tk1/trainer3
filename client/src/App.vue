@@ -11,6 +11,9 @@
       <li class="nav-item">
         <router-link class="nav-link" active-class="active" to="/info">Info</router-link>
       </li>
+      <li class="nav-item">
+        <router-link class="nav-link" active-class="active" to="/signup">Sign Up</router-link>
+      </li>
     </ul>
 
     <router-view></router-view>
@@ -24,7 +27,7 @@ export default {
   name: 'app',
   computed: {
     answerCount () {
-      return store.state.answerCount // <1>
+      return store.state.answerCount
     }
   }
 }
