@@ -12,6 +12,9 @@
         <router-link class="nav-link" active-class="active" to="/info">Info</router-link>
       </li>
       <li class="nav-item">
+        <router-link class="nav-link" active-class="active" to="/login">Log In</router-link>
+      </li>
+      <li class="nav-item">
         <router-link class="nav-link" active-class="active" to="/signup">Sign Up</router-link>
       </li>
     </ul>

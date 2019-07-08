@@ -3,11 +3,13 @@ import VueRouter from 'vue-router'
 
 import TrainProblem from './components/TrainProblem'
 import GeneralInfo from './components/GeneralInfo.vue'
+import LogIn from './components/LogIn.vue'
 import SignUp from './components/SignUp.vue'
 
 Vue.use(VueRouter)
 
 const routes = [
+  { path: '/login', component: LogIn },
   { path: '/signup', component: SignUp },
   { path: '/training', component: TrainProblem },
   { path: '/info', component: GeneralInfo }

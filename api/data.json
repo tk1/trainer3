@@ -1,7 +1,7 @@
 {
   "ids": {
     "User": 3,
-    "AccessToken": 1,
+    "AccessToken": 3,
     "ACL": 1,
     "RoleMapping": 1,
     "Role": 1,
@@ -13,7 +13,10 @@
       "1": "{\"password\":\"$2a$10$iCwqd/.wX5ZJa4/ZkOoxgeqpbwcJTibSgCw/QASWmF3pCiB46FHOm\",\"email\":\"t1@htwsaar.de\",\"id\":1}",
       "2": "{\"password\":\"$2a$10$/HcM14mU058pJ2UoYHffaOPkgndeY94u4sKn7eagg5iGJKnjsCnD2\",\"email\":\"t2@htwsaar.de\",\"id\":2}"
     },
-    "AccessToken": {},
+    "AccessToken": {
+      "mFeRzUpDRKO1INQZH2NF65IgWuD9zmhezYwO0Rv0mXS3ZftdsCcpPVmmdvbPdaDk": "{\"id\":\"mFeRzUpDRKO1INQZH2NF65IgWuD9zmhezYwO0Rv0mXS3ZftdsCcpPVmmdvbPdaDk\",\"ttl\":1209600,\"created\":\"2019-07-08T16:52:50.137Z\",\"userId\":2}",
+      "MFNAElENryjCKZQ3Cgah0VngqbDCr9tuNRfBRNN2EgkFt0T1Ba6PVcbrTD9oLUL1": "{\"id\":\"MFNAElENryjCKZQ3Cgah0VngqbDCr9tuNRfBRNN2EgkFt0T1Ba6PVcbrTD9oLUL1\",\"ttl\":1209600,\"created\":\"2019-07-08T18:03:17.941Z\",\"userId\":2}"
+    },
     "ACL": {},
     "RoleMapping": {},
     "Role": {},
