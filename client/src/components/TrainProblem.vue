@@ -25,6 +25,7 @@
 <script>
 import axios from 'axios'
 import { bus } from '../bus.js'
+import store from '../store'
 import ShowAnswers from './AnswerHistory'
 
 const url = '/api/answers'
@@ -74,6 +75,7 @@ export default {
       })
         .then(response => {
           that.result = response.data.result
+          store.commit('increment', that.result) // <1>
           bus.$emit('new-answer', response.data)
           that.answer = ''
         })

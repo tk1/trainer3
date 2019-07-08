@@ -2,6 +2,8 @@
   <!-- make div to a bootstrap container -->
   <div id="app" class="container">
     <img alt="htwsaar logo" src="./assets/htwsaar_ingwi_logo.png" width="150px">
+    <p>{{answerCount.correct}} correct, {{answerCount.wrong}} wrong answers given</p>
+
     <ul class="nav nav-tabs">
       <li class="nav-item">
         <router-link class="nav-link" active-class="active" to="/training">Training</router-link>
@@ -16,9 +18,15 @@
 </template>
 
 <script>
+import store from './store'
 
 export default {
-  name: 'app'
+  name: 'app',
+  computed: {
+    answerCount () {
+      return store.state.answerCount // <1>
+    }
+  }
 }
 </script>
 
