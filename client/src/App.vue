@@ -3,18 +3,15 @@
   <div id="app" class="container">
     <img alt="htwsaar logo" src="./assets/htwsaar_ingwi_logo.png" width="150px">
     <train-problem></train-problem>
-    <show-answers></show-answers>
   </div>
 </template>
 
 <script>
-import ShowAnswers from './components/AnswerHistory'
 import TrainProblem from './components/TrainProblem'
 
 export default {
   name: 'app',
   components: {
-    ShowAnswers,
     TrainProblem
   }
 }

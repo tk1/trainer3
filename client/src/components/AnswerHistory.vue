@@ -27,10 +27,9 @@
 import axios from 'axios'
 import { bus } from '../bus.js'
 
-const url = '/api/answers'
-
 export default {
   name: 'AnswerHistory',
+  props: ['problemId'], // <1>
   data () {
     return {
       title: 'Answer History',
@@ -40,23 +39,21 @@ export default {
   },
   created () {
     this.fetchData()
-    bus.$on('new-answer', this.newAnswer)
+    bus.$on('new-answer', this.fetchData) // <2>
   },
   methods: {
     fetchData () {
       var that = this
       that.error = null
 
+      var url = `/api/problems/${that.problemId}/answers` // <3>
       axios.get(url)
-        .then(response => {
+        .then(function (response) {
           that.items = response.data
         })
-        .catch(error => {
+        .catch(function (error) {
           that.error = error.toString()
         })
-    },
-    newAnswer (answer) {
-      this.items.push(answer)
     }
   }
 

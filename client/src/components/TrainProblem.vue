@@ -6,7 +6,6 @@
         <div class="problem">
             <h3>Problem {{problem.id}}</h3>
             <p v-if="problem.definition">Calculate {{problem.definition.expression}}</p>
-            <!-- 1 -->
         </div>
 
         <form v-on:submit.prevent="submitAnswer">
@@ -14,40 +13,47 @@
                 <label for="i-name">Answer</label>
                 <input class="form-control" id="i-name" autocomplete="off" v-model="answer" required/>
             </div>
-            <button type="submit" class="btn btn-primary">Send</button>
+            <button :disabled="answerSubmitted" type="submit" class="btn btn-primary">Send</button>
         </form>
-        <p>Result: {{result}}</p>
+        <button :disabled="!answerSubmitted" v-on:click="fetchProblem" class="btn btn-primary">Next Problem</button>
+        <show-answers v-if="answerSubmitted" :problemId="problem.id"></show-answers>
     </div>
 </template>
 
 <script>
 import axios from 'axios'
 import { bus } from '../bus.js'
+import ShowAnswers from './AnswerHistory'
 
 const url = '/api/answers'
 
 export default {
   name: 'training',
+  components: {
+    ShowAnswers
+  },
   data () {
     return {
       title: 'Training',
       error: null,
       problem: {},
       answer: '',
+      answerSubmitted: false,
       result: ''
     }
   },
   created () {
-    this.fetchProblem() // <4>
+    this.fetchProblem()
   },
   methods: {
-    fetchProblem () { // <2>
+    fetchProblem () {
       var that = this
       that.error = null
       that.answer = ''
-      axios.get('/api/problems/1') // <3>
+      that.answerSubmitted = false
+      axios.get('/api/problems/random')
         .then(function (response) {
-          that.problem = response.data
+          that.problem = response.data.problem
         })
         .catch(function (error) {
           console.log(error)
@@ -57,6 +63,7 @@ export default {
     submitAnswer () {
       var that = this
       that.error = null
+      that.answerSubmitted = true
 
       axios.post(url, {
         text: that.answer,
