@@ -13,6 +13,8 @@
                 <label for="i-name">Answer</label>
                 <input class="form-control" id="i-name" autocomplete="off" v-model="answer" required/>
             </div>
+            <p v-if="result === true" class="bg-success answer">Your answer is correct.</p>
+            <p v-if="result === false" class="bg-danger answer">Your answer is wrong.</p>
             <button :disabled="answerSubmitted" type="submit" class="btn btn-primary">Send</button>
         </form>
         <button :disabled="!answerSubmitted" v-on:click="fetchProblem" class="btn btn-primary">Next Problem</button>
@@ -39,7 +41,7 @@ export default {
       problem: {},
       answer: '',
       answerSubmitted: false,
-      result: ''
+      result: undefined
     }
   },
   created () {
@@ -49,6 +51,7 @@ export default {
     fetchProblem () {
       var that = this
       that.error = null
+      that.result = undefined
       that.answer = ''
       that.answerSubmitted = false
       axios.get('/api/problems/random')
@@ -70,7 +73,7 @@ export default {
         problemId: that.problem.id
       })
         .then(response => {
-          that.result = JSON.stringify(response.data)
+          that.result = response.data.result
           bus.$emit('new-answer', response.data)
           that.answer = ''
         })
