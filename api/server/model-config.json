@@ -38,5 +38,9 @@
   "answer": {
     "dataSource": "db",
     "public": true
+  },
+  "problem": {
+    "dataSource": "db",
+    "public": true
   }
 }

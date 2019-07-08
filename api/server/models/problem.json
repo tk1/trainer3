@@ -1,0 +1,24 @@
+{
+  "name": "problem",
+  "base": "PersistedModel",
+  "idInjection": true,
+  "options": {
+    "validateUpsert": true
+  },
+  "properties": {
+    "definition": {
+      "type": "object",
+      "required": true
+    }
+  },
+  "validations": [],
+  "relations": {
+    "answers": {
+      "type": "hasMany",
+      "model": "answer",
+      "foreignKey": ""
+    }
+  },
+  "acls": [],
+  "methods": {}
+}

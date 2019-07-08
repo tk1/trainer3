@@ -8,12 +8,14 @@
         <tr>
           <th>Timestamp</th>
           <th>Answer</th>
+          <th>Problem</th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="item in items" v-bind:key="item.id">
           <td>{{item.createdAt | formatDateTime}}</td>
           <td>{{item.text}}</td>
+          <td>{{item.problemId}}</td>
         </tr>
       </tbody>
     </table>

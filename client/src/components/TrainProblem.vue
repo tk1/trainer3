@@ -2,8 +2,14 @@
     <div>
         <h1>{{title}}</h1>
         <p v-if="error">An error occurred: {{error}}</p>
+
+        <div class="problem">
+            <h3>Problem {{problem.id}}</h3>
+            <p v-if="problem.definition">Calculate {{problem.definition.expression}}</p>
+            <!-- 1 -->
+        </div>
+
         <form v-on:submit.prevent="submitAnswer">
-            <p>Please give your answer</p>
             <div class="form-group">
                 <label for="i-name">Answer</label>
                 <input class="form-control" id="i-name" autocomplete="off" v-model="answer" required/>
@@ -26,17 +32,35 @@ export default {
     return {
       title: 'Training',
       error: null,
+      problem: {},
       answer: '',
       result: ''
     }
   },
+  created () {
+    this.fetchProblem() // <4>
+  },
   methods: {
+    fetchProblem () { // <2>
+      var that = this
+      that.error = null
+      that.answer = ''
+      axios.get('/api/problems/1') // <3>
+        .then(function (response) {
+          that.problem = response.data
+        })
+        .catch(function (error) {
+          console.log(error)
+          that.error = error.toString()
+        })
+    },
     submitAnswer () {
       var that = this
       that.error = null
 
       axios.post(url, {
-        text: that.answer
+        text: that.answer,
+        problemId: that.problem.id
       })
         .then(response => {
           that.result = JSON.stringify(response.data)

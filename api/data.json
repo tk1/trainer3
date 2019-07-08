@@ -5,7 +5,8 @@
     "ACL": 1,
     "RoleMapping": 1,
     "Role": 1,
-    "answer": 9
+    "answer": 5,
+    "problem": 6
   },
   "models": {
     "User": {},
@@ -14,11 +15,17 @@
     "RoleMapping": {},
     "Role": {},
     "answer": {
-      "1": "{\"text\":\"answer 1\",\"createdAt\":\"2019-07-03T12:41:18.896Z\",\"id\":1}",
-      "2": "{\"text\":\"answer 2\",\"createdAt\":\"2019-07-03T13:03:29.877Z\",\"id\":2}",
-      "3": "{\"text\":\"answer 3\",\"createdAt\":\"2019-07-03T13:07:29.877Z\",\"id\":3}",
-      "4": "{\"text\":\"answer 4\",\"createdAt\":\"2019-07-03T14:03:38.138Z\",\"id\":4}",
-      "5": "{\"text\":\"my answer\",\"createdAt\":\"2019-07-03T14:13:27.176Z\",\"id\":5}"
+      "1": "{\"text\":\"3\",\"createdAt\":\"2019-07-08T11:23:40.478Z\",\"problemId\":1,\"id\":12}",
+      "2": "{\"text\":\"7\",\"createdAt\":\"2019-07-08T11:31:29.970Z\",\"problemId\":1,\"id\":13}",
+      "3": "{\"text\":\"three\",\"createdAt\":\"2019-07-08T11:31:43.061Z\",\"problemId\":1,\"id\":14}",
+      "4": "{\"text\":\"3\",\"createdAt\":\"2019-07-08T11:31:46.430Z\",\"problemId\":1,\"id\":15}"
+    },
+    "problem": {
+      "1": "{\"definition\":{\"expression\":\"1+2\"},\"id\":1}",
+      "2": "{\"definition\":{\"expression\":\"11+23\"},\"id\":2}",
+      "3": "{\"definition\":{\"expression\":\"3*4-7\"},\"id\":3}",
+      "4": "{\"definition\":{\"expression\":\"120/6-8*2\"},\"id\":4}",
+      "5": "{\"definition\":{\"expression\":\"2*3*4+7-6/2\"},\"id\":5}"
     }
   }
 }
