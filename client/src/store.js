@@ -18,12 +18,20 @@ export default new Vuex.Store({
     }
   },
   mutations: {
-    setLogin (state, data) { // <3>
+    setLogin (state, data) {
       state.session.authenticated = true
       state.session.token = data.id
       state.session.userId = data.userId
       // set http-header token
-      axios.defaults.headers.common['Authorization'] = state.session.token // <4>
+      axios.defaults.headers.common['Authorization'] = state.session.token
+    },
+    logout (state) {
+      state.session.authenticated = false
+      state.session.token = ''
+      state.session.userId = undefined
+      axios.defaults.headers.common['Authorization'] = ''
+      state.answerCount.correct = 0
+      state.answerCount.wrong = 0
     },
     setError (state, error) {
       state.error = error
@@ -38,9 +46,9 @@ export default new Vuex.Store({
   },
   actions: {
     login (context, creds) {
-      return axios.post('/api/users/login', creds) // <1>
+      return axios.post('/api/users/login', creds)
         .then(response => {
-          context.commit('setLogin', response.data) // <2>
+          context.commit('setLogin', response.data)
           console.dir(response.data)
         })
         .catch(error => {

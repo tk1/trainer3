@@ -6,16 +6,19 @@
 
     <ul class="nav nav-tabs">
       <li class="nav-item">
-        <router-link class="nav-link" active-class="active" to="/training">Training</router-link>
+        <router-link v-if="session.authenticated" class="nav-link" active-class="active" to="/training">Training</router-link>
       </li>
       <li class="nav-item">
         <router-link class="nav-link" active-class="active" to="/info">Info</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" active-class="active" to="/login">Log In</router-link>
+        <router-link v-if="!session.authenticated" class="nav-link" active-class="active" to="/login">Log In</router-link>
       </li>
       <li class="nav-item">
-        <router-link class="nav-link" active-class="active" to="/signup">Sign Up</router-link>
+        <router-link v-if="session.authenticated" class="nav-link" active-class="active" to="/logout">Log Out</router-link>
+      </li>
+      <li class="nav-item">
+        <router-link v-if="!session.authenticated" class="nav-link" active-class="active" to="/signup">Sign Up</router-link>
       </li>
     </ul>
 
@@ -31,6 +34,9 @@ export default {
   computed: {
     answerCount () {
       return store.state.answerCount
+    },
+    session () {
+      return store.state.session
     }
   }
 }

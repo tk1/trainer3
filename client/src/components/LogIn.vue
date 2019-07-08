@@ -16,6 +16,8 @@
             </div>
             <button type="submit" class="btn btn-primary">Log in</button>
         </form>
+        <div v-if="session.authenticated" class="alert alert-success">Log in successful.</div>
+        <div v-if="!session.authenticated" class="alert alert-danger">Not logged in.</div>
     </div>
 </template>
 
@@ -34,6 +36,9 @@ export default {
   computed: {
     error () {
       return store.state.error
+    },
+    session () {
+      return store.state.session
     }
   },
   methods: {
@@ -43,3 +48,9 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+form {
+    margin-bottom: 20px;
+}
+</style>
